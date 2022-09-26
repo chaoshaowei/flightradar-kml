@@ -48,7 +48,8 @@ if __name__ == '__main__':
     #-----------------------------
     WORKING_DIR = os.path.dirname(os.path.realpath(__file__))
 
-    RESPONSE1_FILE = os.path.join(WORKING_DIR, 'Responses', f'List_{REG_ID}.json')
+    RESPONSE_DIR = os.path.join(WORKING_DIR, 'Responses')
+    RESPONSE1_FILE = os.path.join(RESPONSE_DIR, f'List_{REG_ID}.json')
     HEADERS_FILE = os.path.join(WORKING_DIR, f'headers.json')
     
     KML_TEMPLATE_FILE = os.path.join(WORKING_DIR, 'kml_template.xml')
@@ -64,6 +65,8 @@ if __name__ == '__main__':
     #-----------------------------
     with open(HEADERS_FILE, 'r', encoding='utf-8') as f1:
         headers = json.load(f1)
+
+    os.makedirs(RESPONSE_DIR, exist_ok=True)
 
     s = requests.Session()
 
